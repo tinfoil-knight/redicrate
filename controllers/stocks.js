@@ -4,18 +4,25 @@ const bent = require('bent')
 const getJSON = bent('json')
 
 const Redis = require('ioredis')
-const redis = new Redis(6379)
+const redis = new Redis(config.PORT)
 
 stocksRouter.get('/:ticker', async (request, response, next) => {
     const ticker = request.params.ticker
     url = `https://sandbox.iexapis.com/stable/stock/${ticker}/batch?types=quote&token=${config.TOKEN}`
 
     try {
-        //data = await getJSON(url)
-        //response.send(data)
-        //redis.set(ticker, JSON.stringify(data))
-        data = await redis.get(ticker)
-        response.send(data)
+        const cache = await redis.get(ticker)
+        if (cache){
+            console.log("Using Redis Cache")
+            response.send(cache)
+        }
+        else {
+            console.log("Using API Calls")
+            const data = await getJSON(url)
+            redis.set(ticker, JSON.stringify(data))
+            response.send(data)
+        }
+        
     }
     catch (exception){
         next(exception)
