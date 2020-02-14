@@ -15,7 +15,7 @@ const key = 'Tsk_cbfff79bfe95478da2e712e373017005'
 const query = 'AAPL'
 const url = `https://sandbox.iexapis.com/stable/stock/${query}/batch?types=quote&token=${key}`
 
-const data = crate(url)
+const data = crate(url, query)
 // Do whatever you want with the data
 ```
 
