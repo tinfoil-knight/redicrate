@@ -1,7 +1,8 @@
 const Redis = require('ioredis')
-const redis = new Redis()
 const bent = require('bent')
 const getJSON = bent('json')
+
+const redis = new Redis()
 
 async function store(url, query) {
     try {
