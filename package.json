@@ -1,23 +1,19 @@
 {
   "name": "redicrate",
   "version": "1.0.0",
-  "description": "Redis client to limit repeated API calls.",
+  "description": "Redis client for reducing redundant API calls",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "watch": "nodemon index.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tinfoil-knight/redicrate.git"
   },
   "author": "Kunal Kundu",
   "license": "MIT",
-  "dependencies": {
-    "bent": "^7.0.6",
-    "cors": "^2.8.5",
-    "dotenv": "^8.2.0",
-    "express": "^4.17.1",
-    "ioredis": "^4.14.1"
+  "bugs": {
+    "url": "https://github.com/tinfoil-knight/redicrate/issues"
   },
-  "devDependencies": {
-    "nodemon": "^2.0.2"
-  }
+  "homepage": "https://github.com/tinfoil-knight/redicrate#readme"
 }
