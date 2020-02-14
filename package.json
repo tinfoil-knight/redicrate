@@ -1,7 +1,7 @@
 {
   "name": "redicrate",
   "version": "1.0.0",
-  "description": "Redis client for reducing redundant API calls",
+  "description": "Redis Client to reduce duplicate API calls",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,9 +11,5 @@
     "url": "git+https://github.com/tinfoil-knight/redicrate.git"
   },
   "author": "Kunal Kundu",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/tinfoil-knight/redicrate/issues"
-  },
-  "homepage": "https://github.com/tinfoil-knight/redicrate#readme"
+  "license": "MIT"
 }
