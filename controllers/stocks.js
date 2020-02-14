@@ -4,7 +4,7 @@ const bent = require('bent')
 const getJSON = bent('json')
 
 const Redis = require('ioredis')
-const redis = new Redis(config.PORT)
+const redis = new Redis(config.REDIS_PORT)
 
 stocksRouter.get('/:ticker', async (request, response, next) => {
     const ticker = request.params.ticker
@@ -12,7 +12,7 @@ stocksRouter.get('/:ticker', async (request, response, next) => {
 
     try {
         const cache = await redis.get(ticker)
-        if (cache){
+        if (cache) {
             console.log("Using Redis Cache")
             response.send(cache)
         }
@@ -22,12 +22,12 @@ stocksRouter.get('/:ticker', async (request, response, next) => {
             redis.set(ticker, JSON.stringify(data))
             response.send(data)
         }
-        
+
     }
-    catch (exception){
+    catch (exception) {
         next(exception)
     }
-    
+
 })
 
 module.exports = stocksRouter
