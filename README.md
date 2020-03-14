@@ -2,14 +2,21 @@
 
 Ready 2 Go Redis client for small NodeJS applications that limits repetitive API calls.
 
+## Who should use this package?
+
+If you don't use Redis or have never used Redis in the past then this package offers abstractions for beginner-use for the specific purpose of reducing API calls. It has relevant instructions for setting up a Redis server but you can abstract away from that using cloud platforms as services.
+
 ## Installation & Usage
+
 ### Installation
+
 Install using NPM.
 ```bash
 npm i redicrate
 ```
-> The package is currently available only on <a href="https://www.npmjs.com/">NPM Registry</a> .
+
 ### Usage
+
 ```javascript
 const crate = require('redicrate')
 const query = '<Your API Query goes here>'
@@ -26,9 +33,11 @@ async function doSomething(){
 > The query needs to be passed separately because it acts as a key to access value from the key-value store.
 
 ### See an Example
+
 I am using the <a href="https://ghibliapi.herokuapp.com/">Studio Ghibli API</a>. The controller module defined below will respond with the film details when provided the id. It won't call the API on repetitive similar requests.
 
 So if 2 users are both searching for the same film, you call the API only once. The next time, cached data is sent back to the user. Using a cache is significantly faster than calling an API.
+
 ```javascript controllers/stock.js
 const express = require('express')
 const app = express()
@@ -51,6 +60,7 @@ app.get('/:id', async (request, response, next) => {
 ```
 
 ### Installing and Running a Redis Server
+
 > If you host your own backend then you'll need to install Redis and run it on a separate server.
 
 On MacOS, assuming you have <a href="https://brew.sh/">Homebrew</a> installed:
@@ -73,6 +83,7 @@ redis-server
 
 
 ### Using Redis on Heroku
+
 <a href="https://dashboard.heroku.com/">Heroku</a> is a Platform-as-a-Service (PaaS) provider. You can host your backend there. It has add-ons for caching and many other things.
 
 Get started quickly, head over to : <a href="https://elements.heroku.com/addons/heroku-redis">heroku-redis</a> to install the add-on.
@@ -82,6 +93,7 @@ After the add-on is configured, just install `redicrate` and you're good to go.
 If you're on the NodeJS environment and have never used Heroku or other PaaS providers before, get started <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs">here</a>.
 
 ### Common Error
+
 Something like this:
 
 ```bash
@@ -93,6 +105,7 @@ This means that you are not running a redis server. Please see the above instruc
 > Make sure that you're not using the same port for redis and your backend.
 
 ### Project Dependencies
+
 <a href="https://github.com/luin/ioredis">ioredis</a> : A robust, performance-focused and full-featured Redis client for Node.js
 
 <a href="https://github.com/mikeal/bent">bent</a> : Functional JS HTTP client (Node.js & Fetch) w/ async await
